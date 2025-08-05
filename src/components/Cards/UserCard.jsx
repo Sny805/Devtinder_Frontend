@@ -12,6 +12,7 @@ const UserCard = ({ data, isFeed }) => {
     const handleRequest = async (status, userId) => {
         try {
             const res = await axios.post(BASE_URL + "request/send/" + status + "/" + userId, {}, { withCredentials: true })
+
             dispatch(removeFeed(userId))
             toast.success(res?.data?.message)
         }

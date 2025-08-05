@@ -56,7 +56,7 @@ const Requests = () => {
                 <h1 className='text-bold text-2xl'>Connections Requests</h1>
 
             </div>
-            <div className='flex mt-10 gap-4 border px-4'>
+            <div className='flex mt-10 gap-4  px-4'>
                 {
                     requests.map((connection) => (
                         <ConnectionsCard key={connection.fromUserId._id} reviewRequests={reviewRequests} id={connection._id} button={button} connection={connection.fromUserId

@@ -16,56 +16,52 @@ import LandingPage from './components/LandingPage'
 import { PublicRoute, PrivateRoute } from './components/ProtectedRoutes';
 import { Navigate } from 'react-router-dom'
 import Premium from './components/Premium'
+import Chat from './components/Chat'
 
 
 
 function App() {
-
-
   return (
     <Provider store={appStore}>
       <BrowserRouter basename='/'>
         <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
           <Route path='/' element={<Body />} >
-            <Route element={<PublicRoute />}>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Login />} />
-            </Route>
 
-            {/* Protected Routes */}
-            <Route element={<PrivateRoute />}>
-              <Route path='/feed' element={
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Login />} />
+            <Route path='/feed' element={<Feed />} />
+            <Route path='/profile' element={
 
-                <Feed />
+              <Profile />
 
-              } />
-              <Route path='/profile' element={
+            } />
+            <Route path='/connections' element={
 
-                <Profile />
+              <Connections />
 
-              } />
-              <Route path='/connections' element={
+            } />
+            <Route path='/requests' element={
 
-                <Connections />
+              <Requests />
 
-              } />
-              <Route path='/requests' element={
+            } />
+            <Route path='/premium' element={
 
-                <Requests />
+              <Premium />
 
-              } />
-              <Route path='/premium' element={
+            } />
+            <Route path='/chat/:userId' element={
 
-                <Premium />
+              <Chat />
 
-              } />
-            </Route>
-
-
-            <Route path="*" element={<Navigate to="/" />} />
+            } />
           </Route>
+
+
+          <Route path="*" element={<Navigate to="/" />} />
+
         </Routes>
       </BrowserRouter>
     </Provider>

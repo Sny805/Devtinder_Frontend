@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import LandingPage from './components/LandingPage'
 import { PublicRoute, PrivateRoute } from './components/ProtectedRoutes';
 import { Navigate } from 'react-router-dom'
-import Premium from './components/premium'
+import Premium from './components/Premium'
 
 
 

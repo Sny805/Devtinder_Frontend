@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import LandingPage from './components/LandingPage'
 import { PublicRoute, PrivateRoute } from './components/ProtectedRoutes';
 import { Navigate } from 'react-router-dom'
+import Premium from './components/premium'
 
 
 
@@ -55,7 +56,14 @@ function App() {
                 <Requests />
 
               } />
+              <Route path='/premium' element={
+
+                <Premium />
+
+              } />
             </Route>
+
+
             <Route path="*" element={<Navigate to="/" />} />
           </Route>
         </Routes>

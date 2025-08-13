@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const ConnectionsCard = ({ connection, button, id, reviewRequests }) => {
-    const { firstName, lastName, about, gender, photoUrl, skills, age } = connection;
+    const { firstName, lastName, about, gender, photoUrl, skills, age, _id } = connection;
 
     return (
         <div className="card card-side bg-base-300 shadow-xl p-4">
@@ -26,10 +27,12 @@ const ConnectionsCard = ({ connection, button, id, reviewRequests }) => {
                     </div>
                 )}
                 {
-                    button && <div className="card-actions justify-end mt-4">
+                    button == true ? <div className="card-actions justify-end mt-4">
                         <button className="btn btn-primary" onClick={() => reviewRequests("accepted", id)}>Accept</button>
                         <button className="btn btn-secondary" onClick={() => reviewRequests("rejected", id)}>Reject</button>
-
+                    </div> : <div className="card-actions justify-end mt-4">
+                        <Link to={`/chat/${_id}`}><button className="btn btn-primary" >Chat</button></Link>
+                        <button className="btn btn-secondary" >View Profile</button>
                     </div>
                 }
 

@@ -52,7 +52,7 @@ function App() {
               <Premium />
 
             } />
-            <Route path='/chat/:userId' element={
+            <Route path='/chat/:targetUserId' element={
 
               <Chat />
 

@@ -13,7 +13,7 @@ import Requests from './components/Requests'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LandingPage from './components/LandingPage'
-import { PublicRoute, PrivateRoute } from './components/ProtectedRoutes';
+
 import { Navigate } from 'react-router-dom'
 import Premium from './components/Premium'
 import Chat from './components/Chat'
@@ -27,7 +27,6 @@ function App() {
         <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
           <Route path='/' element={<Body />} >
-
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Login />} />

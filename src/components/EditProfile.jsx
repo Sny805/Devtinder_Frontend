@@ -44,7 +44,7 @@ export const EditProfile = ({ user }) => {
     };
 
     return (
-        <div className="flex flex-col lg:flex-row justify-center items-start  gap-8 my-10">
+        <div className="flex flex-col my-0 items-center lg:flex-row justify-center items-start  gap-8 my-10">
             {/* Edit Form */}
             <div className="card bg-base-200 w-full max-w-md shadow-xl">
                 <div className="card-body">
@@ -145,7 +145,7 @@ export const EditProfile = ({ user }) => {
             </div>
 
             {/* Live Preview */}
-            <div className="hidden lg:block">
+            <div className=" lg:block">
                 <UserCard data={data} />
             </div>
         </div>

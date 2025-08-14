@@ -1,39 +1,36 @@
-import axios from 'axios'
-import React, { useEffect } from 'react'
-import { BASE_URL } from '../utills/constants'
-import { useDispatch, useSelector } from 'react-redux'
-import { addFeed } from '../utills/feedSlice'
+
 import UserCard from './Cards/UserCard'
 
+import Loading from '../utills/Loading'
+import NoData from '../utills/NoData'
+import useFetchFeed from './hooks/useFetchFeed'
+
+
 const Feed = () => {
-    const dispatch = useDispatch()
-    const feedData = useSelector((store) => store.feed)
 
-    const getFeed = async () => {
-        try {
-            const res = await axios.get(`${BASE_URL}feed`, { withCredentials: true })
-            dispatch(addFeed(res.data));
 
-        } catch (err) {
-            console.error("Failed to fetch Data", err)
-        }
+    const { feedData, isLoading, error } = useFetchFeed()
 
+    const data = {
+        heading: "No new users in your feed",
+        description: "We're looking for more people to connect with. Check back soon!",
+        svg: <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mb-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
     }
 
-    useEffect(() => {
-        if (!feedData)
-            getFeed();
-    }, [])
 
-    if (!feedData) return
-
-    if (feedData.length === 0) {
-        return <p className="text-center text-xl font-semibold mt-10">No Feed Found</p>;
+    if (isLoading) {
+        return <Loading content="Loading Feed...." />
+    }
+    if (error) return <p className="text-red-500 text-center mt-6">{error}</p>;
+    if (!feedData || feedData?.length <= 0) {
+        return <NoData data={data} />
     }
 
 
     return (
-        feedData && (<div className='flex justify-center items-center mt-6'>
+        feedData && (<div className='flex justify-center items-center mt-6  min-h-[80vh]'>
             <UserCard data={feedData[0]} isFeed={true} />
 
         </div>)
